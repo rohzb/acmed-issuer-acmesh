@@ -1,11 +1,5 @@
-"""FastAPI entrypoint for acmed acme.sh plugin service."""
+"""Compatibility entrypoint for local development."""
 
 from __future__ import annotations
 
-from acmed_plugin_sdk.server import PluginServerSettings, create_plugin_app
-from acmed_issuer_acmesh.plugin import AcmeshPlugin
-
-app = create_plugin_app(
-    AcmeshPlugin(),
-    settings=PluginServerSettings(require_bearer_auth=True),
-)
+from acmed_issuer_acmesh.service import app
