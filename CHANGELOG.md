@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2026-04-26
+
+### Added
+- Added addon installation of the `acme.sh` `dnsapi` bundle so DNS provider
+  hooks are available at runtime.
+
+### Changed
+- Pinned addon installer default to `ACMESH_REF=v3.0.5` and made Docker build
+  pass `ACMESH_REF` explicitly into addon install execution.
+
 ## [0.2.0] - 2026-04-25
 
 ### Added

@@ -1,5 +1,6 @@
 ARG ACMED_PLUGIN_BASE_IMAGE=ghcr.io/rohzb/acmed-plugin-base-image:v0.2.0
 FROM ${ACMED_PLUGIN_BASE_IMAGE}
+ARG ACMESH_REF=v3.0.5
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -14,7 +15,7 @@ RUN apt-get update \
 
 COPY addon/install.sh /tmp/install-addon.sh
 RUN chmod 0755 /tmp/install-addon.sh \
-    && /tmp/install-addon.sh \
+    && ACMESH_REF="${ACMESH_REF}" /tmp/install-addon.sh \
     && rm -f /tmp/install-addon.sh
 
 COPY pyproject.toml README.md /opt/plugin/

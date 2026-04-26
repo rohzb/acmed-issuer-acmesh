@@ -56,7 +56,7 @@ Issue profile fields used by the handler:
 Build from repository root:
 
 ```bash
-docker build -f docker/Dockerfile -t acmed-issuer-acmesh:0.2.0 .
+docker build -f docker/Dockerfile -t acmed-issuer-acmesh:0.2.1 .
 ```
 
 Run:
@@ -64,7 +64,7 @@ Run:
 ```bash
 docker run --rm -p 8081:8081 \
   -e ACMED_REMOTE_PLUGIN_TOKEN='replace-with-random-token' \
-  acmed-issuer-acmesh:0.2.0
+  acmed-issuer-acmesh:0.2.1
 ```
 
 Check health:
@@ -85,7 +85,7 @@ Optional SDK source override at build time:
 ```bash
 docker build -f docker/Dockerfile \
   --build-arg ACMED_PLUGIN_BASE_IMAGE='ghcr.io/rohzb/acmed-plugin-base-image:v0.2.0' \
-  -t acmed-issuer-acmesh:0.2.0 .
+  -t acmed-issuer-acmesh:0.2.1 .
 ```
 
 This image extends the released SDK base image package
