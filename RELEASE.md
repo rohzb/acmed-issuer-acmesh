@@ -19,3 +19,9 @@ Tag push triggers `.github/workflows/release.yml` and produces:
 
 - Python sdist + wheel artifacts attached to GitHub release.
 - Container image pushed to `ghcr.io/<owner>/<repo>`.
+
+Build prerequisite:
+
+- matching SDK base image tag must exist at
+  `ghcr.io/<owner>/acmed-plugin-base-image:vX.Y.Z` (published by the
+  SDK repository release workflow).
