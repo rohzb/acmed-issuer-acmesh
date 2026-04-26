@@ -25,3 +25,6 @@ Build prerequisite:
 - matching SDK base image tag must exist at
   `ghcr.io/<owner>/acmed-plugin-base-image:vX.Y.Z` (published by the
   SDK repository release workflow).
+- matching SDK Python release tag must exist at
+  `https://github.com/<owner>/acmed-plugin-sdk/releases/tag/vX.Y.Z`
+  because package dependency resolves from GitHub release archive URL.
