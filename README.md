@@ -40,7 +40,7 @@ Environment variables:
 - `ACMED_REMOTE_PLUGIN_TOKEN` (required): primary bearer token
 - `ACMED_REMOTE_PLUGIN_TOKEN_NEXT` (optional): overlap token for rotation windows
 - `ACMED_PLUGIN_STATE_DIR` (optional): state root, default `/var/lib/acmed-plugin`
-- `ACMESH_REF` (optional build/runtime addon var): `acme.sh` ref, default `v3.0.5`
+- `ACMESH_REF` (optional build/runtime addon var): `acme.sh` ref, default `3.1.2`
 
 Issue profile fields used by the handler:
 

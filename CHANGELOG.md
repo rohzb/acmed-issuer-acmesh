@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.5] - 2026-04-26
+
+### Changed
+- Updated default acme.sh ref to `3.1.2`, which includes
+  `dns_hetznercloud.sh`.
+- Addon installer now falls back from `refs/tags/<ref>` to
+  `refs/heads/<ref>` archives, so branch refs (for example `master`) also
+  work.
+
 ## [0.2.4] - 2026-04-26
 
 ### Fixed
