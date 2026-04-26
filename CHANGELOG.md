@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.4] - 2026-04-26
+
+### Fixed
+- Synced staged DNS hook scripts from `/usr/local/share/acme.sh/dnsapi` into
+  `$HOME/.acme.sh/dnsapi` at runtime before `acme.sh --issue`.
+- This fixes `Can not find dns api hook for: dns_hetznercloud` for non-root
+  runtime users.
+
 ## [0.2.3] - 2026-04-26
 
 ### Fixed

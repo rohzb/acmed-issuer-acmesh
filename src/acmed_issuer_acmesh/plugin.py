@@ -70,6 +70,31 @@ class AcmeshPlugin:
                 env[name] = os.environ[name]
         return env
 
+    def _ensure_dnsapi_hooks(self, env: dict[str, str]) -> None:
+        """Ensure acme.sh dnsapi hooks are available under the runtime HOME.
+
+        acme.sh resolves DNS provider hooks from ``$HOME/.acme.sh/dnsapi``.
+        Our image stages hook files under ``/usr/local/share/acme.sh/dnsapi``
+        during build. This sync keeps runtime lookups functional for non-root
+        users whose HOME is writable at runtime.
+        """
+        source_dir = Path("/usr/local/share/acme.sh/dnsapi")
+        if not source_dir.exists():
+            return
+
+        home_dir = Path(env.get("HOME") or "/tmp")
+        target_dir = home_dir / ".acme.sh" / "dnsapi"
+        target_dir.mkdir(parents=True, exist_ok=True)
+
+        for source_entry in source_dir.iterdir():
+            target_entry = target_dir / source_entry.name
+            if source_entry.is_dir():
+                target_entry.mkdir(parents=True, exist_ok=True)
+                continue
+            if target_entry.exists():
+                continue
+            shutil.copy2(source_entry, target_entry)
+
     def issue(self, request: IssueRequest) -> IssueResult:
         cached = self._load_cached_result(request.order_id)
         if cached is not None:
@@ -138,6 +163,7 @@ class AcmeshPlugin:
             issue_argv.extend(["-d", dns_name])
 
         env = self._filtered_env(request)
+        self._ensure_dnsapi_hooks(env)
 
         try:
             issue_run = subprocess.run(  # noqa: S603
